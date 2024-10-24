@@ -534,6 +534,13 @@ def plot_1(ax, samples, inst, companion, style,
             baseline = calculate_baseline(params_median, inst, key)
             stellar_var = calculate_stellar_var(params_median, 'all', key, xx=x)
             y -= model+baseline+stellar_var
+
+        #::: remove other companions
+        if style in ['full']:
+            for other_companion in base.settings['companions_rv']:
+                if companion!=other_companion:
+                    model = rv_fct(params_median, inst, other_companion)[0]
+                    y -= model
             
             
         #::: plot data, not phase        
