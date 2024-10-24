@@ -174,6 +174,8 @@ class allesclass():
                 samples = self.posterior_samples[np.random.randint(len(self.posterior_samples), size=Nsamples)]
             elif mode=='initial_guess':
                 samples = self.initial_guess_samples
+            elif mode == 'maximum_likelihood':
+                samples = self.posterior_samples_at_maximum_likelihood.reshape(1, -1)
             else:
                 raise ValueError('Variable "mode" has to be "posterior" or "initial_guess".')
         general_output.plot_1(ax, samples, inst, companion, style, base=self, dt=dt, zoomwindow=zoomwindow, force_binning=force_binning, kwargs_data=kwargs_data, kwargs_ax=kwargs_ax)
