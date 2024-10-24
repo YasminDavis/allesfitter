@@ -218,7 +218,7 @@ def plot_panel_transits(datadir, ax=None, insts=None, companions=None, colors=No
                 model = flux_fct(p, inst, companion, xx=xx2) #evaluated on xx2 (!)
                 if ppm:
                     model = (model-1)*1e6
-                ax.plot( xx*zoomfactor, model, 'r-', alpha=alpha, zorder=12, lw=2 )
+                ax.plot( xx*zoomfactor, model, **kwargs_model)
                  
     if ppm:
         ylim0 = np.nanmin(ally) - 500
@@ -577,7 +577,7 @@ def plot_1(ax, samples, inst, companion, style,
                                     baseline -= np.median(baseline)
                                 stellar_var = calculate_stellar_var(p, 'all', key, xx=xx) #evaluated on xx (!)
                                 ax.plot( xx, baseline+stellar_var+baseline_plus, marker=None, linestyle='-', color='orange', alpha=alpha, zorder=12 )
-                                ax.plot( xx, model+baseline+stellar_var, 'r-', alpha=alpha, zorder=12 )
+                                ax.plot( xx, model+baseline+stellar_var, **kwargs_model )
                 else:
                     ax.text(0.05, 0.95, '(The model is not plotted here because the\nphotometric data spans more than 60 days)', fontsize=10, va='top', ha='left', transform=ax.transAxes)  
             elif key in ['rv', 'rv2']: 
@@ -591,7 +591,7 @@ def plot_1(ax, samples, inst, companion, style,
                         baseline -= np.median(baseline)                    
                     stellar_var = calculate_stellar_var(p, 'all', key, xx=xx) #evaluated on xx (!)
                     ax.plot( xx, baseline+stellar_var+baseline_plus, marker=None, linestyle='-', color='orange', alpha=alpha, zorder=12 )
-                    ax.plot( xx, model+baseline+stellar_var, 'r-', alpha=alpha, zorder=12 )
+                    ax.plot( xx, model+baseline+stellar_var, **kwargs_model )
         
         #::: other stuff
         if timelabel=='Time_since':
@@ -669,7 +669,7 @@ def plot_1(ax, samples, inst, companion, style,
                     p = update_params(s)
 #                    p = update_params(s, phased=True)
                     model = rv_fct(p, inst, companion, xx=xx2)[i_return]
-                    ax.plot( xx*zoomfactor, model, 'r-', alpha=alpha, zorder=12 )
+                    ax.plot( xx*zoomfactor, model, **kwargs_model)
             
         
         #----------------------------------------------------------------------
@@ -737,7 +737,7 @@ def plot_1(ax, samples, inst, companion, style,
                         p = update_params(s)
     #                    p = update_params(s, phased=True)
                         model = flux_fct(p, inst, companion, xx=xx2) #evaluated on xx (!)
-                        ax.plot( xx*zoomfactor, model, 'r-', alpha=alpha, zorder=12 )
+                        ax.plot( xx*zoomfactor, model, **kwargs_model)
              
         
         #----------------------------------------------------------------------

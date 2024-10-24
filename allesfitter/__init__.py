@@ -178,7 +178,7 @@ class allesclass():
                 samples = self.posterior_samples_at_maximum_likelihood.reshape(1, -1)
             else:
                 raise ValueError('Variable "mode" has to be "posterior" or "initial_guess".')
-        general_output.plot_1(ax, samples, inst, companion, style, base=self, dt=dt, zoomwindow=zoomwindow, force_binning=force_binning, kwargs_data=kwargs_data, kwargs_ax=kwargs_ax)
+        general_output.plot_1(ax, samples, inst, companion, style, base=self, dt=dt, zoomwindow=zoomwindow, force_binning=force_binning, kwargs_data=kwargs_data, kwargs_ax=kwargs_ax, kwargs_model=kwargs_model)
         return fig, ax
         
         
