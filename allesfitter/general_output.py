@@ -592,7 +592,12 @@ def plot_1(ax, samples, inst, companion, style,
                 for i in range(samples.shape[0]):
                     s = samples[i,:]
                     p = update_params(s)
-                    model = calculate_model(p, inst, key, xx=xx) #evaluated on xx (!)
+                    if (companion != 'b'):
+                        s = samples[i,:]
+                        p = update_params(s)
+                        model = rv_fct(p, inst, companion, xx=xx)[0]
+                    else:
+                        model = calculate_model(p, inst, key, xx=xx) #evaluated on xx (!)
                     baseline = calculate_baseline(p, inst, key, xx=xx) #evaluated on xx (!)
                     if style in ['full_minus_offset']:
                         baseline -= np.median(baseline)                    
