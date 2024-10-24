@@ -99,7 +99,7 @@ def draw_ns_posterior_samples_at_maximum_likelihood(results, as_type='1d_array')
 ###############################################################################
 #::: analyse the output from save_ns.pickle file
 ###############################################################################
-def ns_output(datadir):
+def ns_output(datadir, num_plot_samples=200):
     '''
     Inputs:
     -------
@@ -138,9 +138,9 @@ def ns_output(datadir):
     results = pickle.load(f)
     f.close()
            
-    
+
     #::: plot the fit
-    posterior_samples_for_plot = draw_ns_posterior_samples(results, Nsamples=20) #only 20 samples for plotting
+    posterior_samples_for_plot = draw_ns_posterior_samples(results, Nsamples=num_plot_samples)
     
     for companion in config.BASEMENT.settings['companions_all']:
         fig, axes = afplot(posterior_samples_for_plot, companion)
