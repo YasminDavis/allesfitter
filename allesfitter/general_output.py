@@ -422,7 +422,7 @@ def plot_1(ax, samples, inst, companion, style,
     if 'marker' not in kwargs_data: kwargs_data['marker'] = '.'
     if 'markersize' not in kwargs_data: kwargs_data['markersize'] = 8.
     if 'linestyle' not in kwargs_data: kwargs_data['linestyle'] = 'none'
-    if 'color' not in kwargs_data: kwargs_data['color'] = 'b'
+    if 'color' not in kwargs_data: kwargs_data['color'] = 'mediumslateblue'
     if 'alpha' not in kwargs_data: kwargs_data['alpha'] = 1.
     if 'rasterized' not in kwargs_data: kwargs_data['rasterized'] = True
     
@@ -430,7 +430,7 @@ def plot_1(ax, samples, inst, companion, style,
     if 'marker' not in kwargs_model: kwargs_model['marker'] = 'none'
     if 'markersize' not in kwargs_model: kwargs_model['markersize'] = 0.
     if 'linestyle' not in kwargs_model: kwargs_model['linestyle'] = '-'
-    if 'color' not in kwargs_model: kwargs_model['color'] = 'r'
+    if 'color' not in kwargs_model: kwargs_model['color'] = 'mediumturquoise'
     if 'alpha' not in kwargs_model: kwargs_model['alpha'] = 1.
     
     if kwargs_ax is None: kwargs_ax = {}
@@ -874,7 +874,7 @@ def afplot_per_transit(samples, inst, companion, base=None, kwargs_dict=None):
                 baseline = calculate_baseline(p, inst, key, xx=xx) #evaluated on xx (!)
                 stellar_var = calculate_stellar_var(p, 'all', key, xx=xx) #evaluated on xx (!)
                 ax.plot( xx, baseline+stellar_var+baseline_plus, marker=None, linestyle='-', color='orange', alpha=alpha, zorder=12 )
-                ax.plot( xx, model+baseline+stellar_var, 'r-', alpha=alpha, zorder=12 )
+                ax.plot( xx, model+baseline+stellar_var, 'mediumturquoise', alpha=alpha, zorder=12 )
             ax.set(xlim=[t-zoomwindow/2., t+zoomwindow/2.])
             ax.axvline(t,color='grey',lw=2,ls='--',label='linear prediction')
             if base.settings['fit_ttvs']==True:
