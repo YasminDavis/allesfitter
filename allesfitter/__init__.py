@@ -107,6 +107,8 @@ class allesclass():
             f.close()
             self.posterior_samples = nested_sampling_output.draw_ns_posterior_samples(results) # all weighted posterior_samples
             self.posterior_params = nested_sampling_output.draw_ns_posterior_samples(results, as_type='dic') # all weighted posterior_samples
+            self.posterior_samples_at_maximum_likelihood = nested_sampling_output.draw_ns_posterior_samples_at_maximum_likelihood(results)
+            self.posterior_params_at_maximum_likelihood = nested_sampling_output.draw_ns_posterior_samples_at_maximum_likelihood(results, as_type='dic')
             self.posterior_params_median, self.posterior_params_ll, self.posterior_params_ul = general_output.get_params_from_samples(self.posterior_samples)
         
         #::: mcmc?

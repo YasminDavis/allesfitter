@@ -75,6 +75,27 @@ def draw_ns_posterior_samples(results, Nsamples=None, as_type='2d_array'):
 
 
 
+def draw_ns_posterior_samples_at_maximum_likelihood(results, as_type='1d_array'):
+    '''
+    ! posterior samples are drawn as resampled weighted samples !
+    ! do not confuse posterior_samples (weighted, resampled) with results['samples'] (unweighted) !
+    '''
+    weights = np.exp(results['logwt'] - results['logz'][-1])
+    maxind = np.argmax(weights)
+    posterior_samples = results['samples'][maxind]
+    
+    if as_type=='1d_array':
+        return posterior_samples
+    
+    elif as_type=='dic':
+        posterior_samples_dic = {}
+        for key in config.BASEMENT.fitkeys:
+            ind = np.where(config.BASEMENT.fitkeys==key)[0]
+            posterior_samples_dic[key] = posterior_samples[ind]
+        return posterior_samples_dic
+
+
+
 ###############################################################################
 #::: analyse the output from save_ns.pickle file
 ###############################################################################
